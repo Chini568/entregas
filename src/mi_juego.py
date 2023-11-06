@@ -146,15 +146,14 @@ while True:
                     funcionando = False
                 if e.type == APARECER_ENEMIGOS:
                     if mostrar_tiempo > 30:
-                        crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
-                        crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
-                        crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
+                        for i in range(3):
+                            enemigo_x = randint(0, width - ancho_enemigo)
+                            enemigo_y = randint(0, height - alto_enemigo)
+                            crear_enemigo(imagen_enemigo, enemigo_x, enemigo_y, None, enemigos, ancho_enemigo, alto_enemigo)
+                        
                     else:
-                        crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
-                        crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
-                        crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
-                        crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
-                        crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
+                        for i in range(5):
+                            crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
 
                 if e.type == MEJORA_DE_PODER:
                     validacion_mejora_poder = True
