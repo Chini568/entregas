@@ -136,7 +136,6 @@ while True:
         pygame.mouse.set_visible(0)
         clock.tick(FPS)
         # pasaje de milisegundos a segundos
-        # tiempo = int(pygame.time.get_ticks() / 1000)
         #restandole los segundos en juego para ir de 60 para abajo
         mostrar_tiempo = mostrar_tiempo - 1 / FPS   
         if puntaje > max_puntaje:
@@ -147,13 +146,14 @@ while True:
                 if e.type == APARECER_ENEMIGOS:
                     if mostrar_tiempo > 30:
                         for i in range(3):
-                            enemigo_x = randint(0, width - ancho_enemigo)
-                            enemigo_y = randint(0, height - alto_enemigo)
-                            crear_enemigo(imagen_enemigo, enemigo_x, enemigo_y, None, enemigos, ancho_enemigo, alto_enemigo)
-                        
+                            enemigo_x, enemigo_y, distancia = distancia_rect_aleatorios(jugador, width, height, ancho_enemigo, alto_enemigo)
+                            if distancia > 100:
+                                crear_enemigo(imagen_enemigo, enemigo_x, enemigo_y, None, enemigos, ancho_enemigo, alto_enemigo)
                     else:
                         for i in range(5):
-                            crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
+                            enemigo_x, enemigo_y, distancia = distancia_rect_aleatorios(jugador, width, height, ancho_enemigo, alto_enemigo)
+                            if distancia > 100:
+                                crear_enemigo(imagen_enemigo, randint(0, width - ancho_enemigo), randint(0, height - alto_enemigo), None, enemigos, ancho_enemigo, alto_enemigo)
 
                 if e.type == MEJORA_DE_PODER:
                     validacion_mejora_poder = True
