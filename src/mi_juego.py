@@ -136,7 +136,6 @@ while True:
         pygame.mouse.set_visible(0)
         clock.tick(FPS)
         # pasaje de milisegundos a segundos
-        # tiempo = int(pygame.time.get_ticks() / 1000)
         #restandole los segundos en juego para ir de 60 para abajo
         mostrar_tiempo = mostrar_tiempo - 1 / FPS   
         if puntaje > max_puntaje:
