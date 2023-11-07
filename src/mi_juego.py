@@ -146,6 +146,7 @@ while True:
                 if e.type == APARECER_ENEMIGOS:
                     if mostrar_tiempo > 30:
                         for i in range(3):
+                            #valido que la posicion de spawn del enemigo sea mayor a una distancia de 100 pixeles entre el jugador 
                             enemigo_x, enemigo_y, distancia = distancia_rect_aleatorios(jugador, width, height, ancho_enemigo, alto_enemigo)
                             if distancia > 100:
                                 crear_enemigo(imagen_enemigo, enemigo_x, enemigo_y, None, enemigos, ancho_enemigo, alto_enemigo)
