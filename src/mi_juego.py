@@ -230,7 +230,7 @@ while True:
                         vidas = 3
                         esperar_click(screen, boton_jugar, boton_salir, 'Jugar', 'Salir', azul, verde)
                         funcionando = False
-                        f.write(str(puntaje))
+
                         
 
         #colision power up con jugador
