@@ -7,8 +7,17 @@ from config_mi_juego import *
 from detectar_colisiones import * 
 from crear_bloques_y_textos import *
 from pausa_y_terminar import *
+def guardar_puntaje(puntaje):
+    with open('./src/assets_mi_juego/puntaje.txt', 'w') as archivo:
+        archivo.write(str(puntaje))
 
-
+def leer_puntaje():
+    try:
+        with open('./src/assets_mi_juego/puntaje.txt', 'r') as archivo:
+            return int(archivo.read())
+    except:
+        with open('./src/assets_mi_juego/puntaje.txt', 'w') as archivo:
+            return archivo.write('0')
 
 # nicializar los modulos de pygame
 pygame.init()
@@ -126,6 +135,7 @@ while True:
     puntaje = 0     
     tiempo_mejora = FPS * 10
     mostrar_tiempo = 60
+    max_puntaje = leer_puntaje()
     screen.blit(fondo_menu, (0,0))  
     mostrar_texto_boton(screen, "Chitato", width // 2, 100, 120 ,blanco)
     esperar_click(screen, boton_jugar, boton_salir, 'Jugar', 'Salir', azul, verde)
@@ -140,6 +150,7 @@ while True:
         mostrar_tiempo = mostrar_tiempo - 1 / FPS   
         if puntaje > max_puntaje:
             max_puntaje = puntaje
+            guardar_puntaje(max_puntaje)
         for e in pygame.event.get():
                 if e.type == pygame.QUIT:
                     funcionando = False
@@ -219,6 +230,8 @@ while True:
                         vidas = 3
                         esperar_click(screen, boton_jugar, boton_salir, 'Jugar', 'Salir', azul, verde)
                         funcionando = False
+                        f.write(str(puntaje))
+                        
 
         #colision power up con jugador
         if validacion_mejora_poder:
@@ -288,6 +301,7 @@ while True:
                 vidas = 3
                 esperar_click(screen, boton_jugar, boton_salir, 'Continuar', 'Salir', azul, verde)
                 funcionando = False
+
 
             #victoria
             if int(mostrar_tiempo) == 0:
