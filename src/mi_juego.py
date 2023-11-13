@@ -7,6 +7,7 @@ from config_mi_juego import *
 from detectar_colisiones import * 
 from crear_bloques_y_textos import *
 from pausa_y_terminar import *
+
 def guardar_puntaje(puntaje):
     with open('./src/assets_mi_juego/puntaje.txt', 'w') as archivo:
         archivo.write(str(puntaje))
